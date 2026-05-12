@@ -9,9 +9,9 @@ import re
 from urllib.parse import urlparse, parse_qs
 from typing import NamedTuple
 
-# ---------------------------------------------------------------------------
+
 # Signal weights (sum to 1.0)
-# ---------------------------------------------------------------------------
+
 _WEIGHTS = {
     "suspicious_keywords": 0.25,
     "suspicious_tld":      0.15,
@@ -23,9 +23,9 @@ _WEIGHTS = {
     "query_sensitive_keys": 0.10,
 }
 
-# ---------------------------------------------------------------------------
+
 # Reference data
-# ---------------------------------------------------------------------------
+
 SUSPICIOUS_KEYWORDS = [
     "login", "verify", "account", "update", "secure",
     "bank", "webscr", "paypal", "appleid", "icloud",
@@ -59,9 +59,7 @@ HOMOGLYPH_MAP = {
     'h': 'ջ', 'i': 'і',
 }
 
-# ---------------------------------------------------------------------------
 # Helpers
-# ---------------------------------------------------------------------------
 
 def _extract_domain(parsed: "ParseResult") -> str:
     """Return the registered domain (netloc without port)."""
@@ -87,9 +85,7 @@ def _detect_homoglyphs(url: str) -> list[str]:
     return found
 
 
-# ---------------------------------------------------------------------------
 # Core scoring
-# ---------------------------------------------------------------------------
 
 class SignalResult(NamedTuple):
     name: str
